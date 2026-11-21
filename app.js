@@ -11,19 +11,31 @@
 
   const sofia = [42.7429, 23.2718];
   const kb = [42.8160, 23.2180];
-  map.fitBounds(L.latLngBounds([sofia, kb]).pad(0.25));
+  const allPts = [[sofia, kb]];
+  D.lines.forEach(l => l.directions.forEach(dd => dd.dayTypes.forEach(dt => (dt.stops||[]).forEach(s => { if (s.coord) allPts.push([s.coord]); }))));
+  (D.trains||[]).forEach(t => t.directions.forEach(dd => dd.dayTypes.forEach(dt => (dt.stops||[]).forEach(s => { if (s.coord) allPts.push([s.coord]); }))));
+  const flat = allPts.flat();
+  map.fitBounds(L.latLngBounds(flat).pad(0.15));
 
-  const poly = D.ROUTE_POLYLINE; // Sofia->KB
-  const polyRev = poly.slice().reverse();
-
+  // Per-line polylines (each line.polyline is [lat,lng] Sofia->destination)
+  const polyCache = new Map();
+  function getPoly(line) {
+    if (!line) return null;
+    if (polyCache.has(line.id)) return polyCache.get(line.id);
+    const p = line.polyline || D.ROUTE_POLYLINE;
+    const fwd = p;
+    const rev = p.slice().reverse();
+    const cumF = cumDist(fwd);
+    const cumR = cumDist(rev);
+    const obj = { fwd, rev, cumF, totalF: cumF[cumF.length-1], cumR, totalR: cumR[cumR.length-1] };
+    polyCache.set(line.id, obj);
+    return obj;
+  }
   function cumDist(coords) {
     const d = [0];
     for (let i = 1; i < coords.length; i++) d.push(d[i-1] + L.latLng(coords[i-1]).distanceTo(L.latLng(coords[i])));
     return d;
   }
-  const cumFwd = cumDist(poly), totalFwd = cumFwd[cumFwd.length-1];
-  const cumRev = cumDist(polyRev), totalRev = cumRev[cumRev.length-1];
-
   function pointAlong(coords, cum, total, frac) {
     frac = Math.max(0, Math.min(1, frac));
     const target = frac * total;
@@ -36,7 +48,8 @@
             coords[i][1] + (coords[i+1][1]-coords[i][1])*t];
   }
 
-  const routeLine = L.polyline(poly, { color: '#1f3864', weight: 4, opacity: 0.55 }).addTo(map);
+  const corridorPoly = D.ROUTE_POLYLINE;
+  const routeLine = L.polyline(corridorPoly, { color: '#1f3864', weight: 4, opacity: 0.55 }).addTo(map);
   L.marker(sofia).addTo(map).bindPopup('<b>Sofia</b><br>Obelya / 61-во ОУ');
   L.marker(kb).addTo(map).bindPopup('<b>Kostinbrod</b><br>centre');
 
@@ -170,9 +183,10 @@
     } else {
       fracSpace = fracTime; // full corridor
     }
-    const coords = trip.dir === 'sofiaToKb' ? poly : polyRev;
-    const cum = trip.dir === 'sofiaToKb' ? cumFwd : cumRev;
-    const total = trip.dir === 'sofiaToKb' ? totalFwd : totalRev;
+    const po = getPoly(trip.line);
+    const coords = trip.dir === 'sofiaToKb' ? po.fwd : po.rev;
+    const cum = trip.dir === 'sofiaToKb' ? po.cumF : po.cumR;
+    const total = trip.dir === 'sofiaToKb' ? po.totalF : po.totalR;
     return pointAlong(coords, cum, total, fracSpace);
   }
 
@@ -198,6 +212,9 @@
     trainLayer.clearLayers();
     // highlight selected line on the route
     const selLine = state.lineFilter !== 'all' ? findLine(state.lineFilter) : null;
+    const po = selLine ? getPoly(selLine) : null;
+    const newCoords = po ? po.fwd : corridorPoly;
+    routeLine.setLatLngs(newCoords);
     routeLine.setStyle({ color: selLine ? selLine.color : '#1f3864', weight: selLine ? 6 : 4 });
     updateLineCard();
 
