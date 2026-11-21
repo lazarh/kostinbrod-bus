@@ -303,7 +303,9 @@
     const rows = dirs.map(d => `<div class="row"><b>${d.label}</b><span>${d.start} → ${d.end}</span></div>`).join('');
     const stops0 = (((line.directions[0]||{}).dayTypes||[]).find(b=>b.type==='weekday')||{}).stops || [];
     const stopsHtml = stops0.length ? `<div class="stops"><b>Stops:</b> ${stops0.map(s=>s.name).join(' · ')}</div>` : '';
+    const imgHtml = line.image ? `<img src="${line.image}" alt="${line.name}" style="width:100%;border-radius:4px;margin-bottom:6px;" />` : '';
     inner.innerHTML = `
+      ${imgHtml}
       <div class="row"><b>Line</b><span><span class="swatch" style="background:${line.color}"></span>${line.name}</span></div>
       <div class="row"><b>Operator</b><span>${line.operator || '—'}</span></div>
       ${rows}
@@ -315,7 +317,6 @@
   document.getElementById('lineFilter').addEventListener('change', e => { state.lineFilter = e.target.value; render(); });
   document.getElementById('dirFilter').addEventListener('change', e => { state.dirFilter = e.target.value; render(); });
   document.getElementById('showBuses').addEventListener('change', e => { state.showBuses = e.target.checked; render(); });
-  document.getElementById('showTrains').addEventListener('change', e => { state.showTrains = e.target.checked; render(); });
   document.getElementById('dayType').addEventListener('change', e => { state.dayType = e.target.value; render(); });
 
   render();

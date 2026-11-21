@@ -14,13 +14,13 @@ Settings → Pages → Source: `main` branch / root. The app will be available a
 `https://<user>.github.io/kostinbrod-bus/`.
 
 ## Data sources
-- Buses: Kostinbrod municipality (https://kostinbrod.bg/transport) — Lines 1–5
-  (Petarch, Kostinbrod, Dragovishtitsa, Tsarichina/Gradets, Chibaovtsi) plus
-  central bus station intercity. Full timetables: see image links in `chatgpt.json`.
-- Trains: BDZh (https://razpisanie.bdz.bg) — Sofia↔Kostinbrod.
-- All schedules are stored in `chatgpt.json` (originally transcribed with ChatGPT).
+- Buses: Kostinbrod municipality — Lines 1, 3, 4, 5, 9
+  (Petarch, Dragovishtitsa, Tsarichina/Gradets, Mina Chibaovtsi, Opitsvet).
+  Full timetables: local images in `assets/` (line1.jpg … line9.jpg).
+  Stop coordinates: `line1.txt`, `line3.txt`, `line4.txt`, `line5.txt`, `line9.txt`.
+- All schedules and stops are stored in `chatgpt.json`.
 - Map tiles: © OpenStreetMap contributors (https://www.openstreetmap.org/copyright).
-- Route geometry: OSRM public routing API.
+- Route geometry: OSRM public routing API (per-line, through each line's stops).
 
 ## Caveats
 - Trip durations are **estimates** (~30 min bus, ~26 min train); operators do
