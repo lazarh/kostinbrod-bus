@@ -45,7 +45,10 @@
   // stop markers
   const stopLayer = L.layerGroup().addTo(map);
 
-  const state = { dayType: 'auto', dirFilter: 'both', showBuses: true, showTrains: true };
+  const state = { dayType: 'auto', dirFilter: 'both', showBuses: true, showTrains: true, lineFilter: 'all' };
+
+  function allLines() { return [...D.lines, ...(D.trains || [])]; }
+  function findLine(id) { return allLines().find(l => l.id === id); }
 
   function toMin(hhmm) { const [h,m] = hhmm.split(':').map(Number); return h*60+m; }
   function nowMin() { const n = new Date(); return n.getHours()*60 + n.getMinutes() + n.getSeconds()/60; }
@@ -90,6 +93,7 @@
     const trains = (D.trains || []).map(t => ({...t, kind: 'train', _isTrain: true}));
 
     const processLine = (line) => {
+      if (state.lineFilter !== 'all' && line.id !== state.lineFilter) return;
       const isTrain = line.kind === 'train' || line._isTrain;
       ['sofiaToKb','kbToSofia'].forEach(dirId => {
         if (state.dirFilter !== 'both' && state.dirFilter !== dirId) return;
@@ -192,6 +196,10 @@
   function render() {
     busLayer.clearLayers();
     trainLayer.clearLayers();
+    // highlight selected line on the route
+    const selLine = state.lineFilter !== 'all' ? findLine(state.lineFilter) : null;
+    routeLine.setStyle({ color: selLine ? selLine.color : '#1f3864', weight: selLine ? 6 : 4 });
+    updateLineCard();
 
     const now = nowMin();
     const trips = buildTrips();
@@ -250,6 +258,44 @@
     legend.appendChild(div);
   });
 
+  // Line filter dropdown
+  const lineSel = document.getElementById('lineFilter');
+  allLines().forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l.id;
+    opt.textContent = l.name;
+    lineSel.appendChild(opt);
+  });
+
+  function updateLineCard() {
+    const inner = document.getElementById('lineCardInner');
+    if (state.lineFilter === 'all') {
+      inner.innerHTML = 'Select a line above to see its route and terminals.';
+      return;
+    }
+    const line = findLine(state.lineFilter);
+    if (!line) { inner.innerHTML = 'Unknown line.'; return; }
+    // gather terminals per direction from first dayType block
+    const dirs = (line.directions || []).map(dd => {
+      const block = (dd.dayTypes || []).find(b => b.type === 'weekday') || (dd.dayTypes || [])[0];
+      const stops = (block && block.stops) || [];
+      const start = stops.length ? stops[0].name : '—';
+      const end = stops.length ? stops[stops.length-1].name : '—';
+      return { label: dd.label || dd.id, start, end, n: stops.length };
+    });
+    const rows = dirs.map(d => `<div class="row"><b>${d.label}</b><span>${d.start} → ${d.end}</span></div>`).join('');
+    const stops0 = (((line.directions[0]||{}).dayTypes||[]).find(b=>b.type==='weekday')||{}).stops || [];
+    const stopsHtml = stops0.length ? `<div class="stops"><b>Stops:</b> ${stops0.map(s=>s.name).join(' · ')}</div>` : '';
+    inner.innerHTML = `
+      <div class="row"><b>Line</b><span><span class="swatch" style="background:${line.color}"></span>${line.name}</span></div>
+      <div class="row"><b>Operator</b><span>${line.operator || '—'}</span></div>
+      ${rows}
+      ${line.notes ? `<div class="row"><b>Notes</b><span>${line.notes}</span></div>` : ''}
+      ${stopsHtml}
+    `;
+  }
+
+  document.getElementById('lineFilter').addEventListener('change', e => { state.lineFilter = e.target.value; render(); });
   document.getElementById('dirFilter').addEventListener('change', e => { state.dirFilter = e.target.value; render(); });
   document.getElementById('showBuses').addEventListener('change', e => { state.showBuses = e.target.checked; render(); });
   document.getElementById('showTrains').addEventListener('change', e => { state.showTrains = e.target.checked; render(); });

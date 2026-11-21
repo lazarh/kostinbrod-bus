@@ -21,6 +21,11 @@
   <div id="map"></div>
   <aside>
     <section class="controls">
+      <label>Line:
+        <select id="lineFilter">
+          <option value="all">All lines</option>
+        </select>
+      </label>
       <label>Direction:
         <select id="dirFilter">
           <option value="both">Both directions</option>
@@ -39,6 +44,11 @@
           <option value="weekend">Weekend</option>
         </select>
       </label>
+    </section>
+
+    <section id="lineCard" class="card">
+      <h2>Selected line</h2>
+      <div id="lineCardInner" class="sub">Select a line above to see its route and terminals.</div>
     </section>
 
     <section>

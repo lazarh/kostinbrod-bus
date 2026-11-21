@@ -28,4 +28,11 @@ section h2 { font-size: 1rem; margin: 8px 0 6px; color: #1f3864; }
 .sources ul { font-size: 0.75rem; color: #555; padding-left: 16px; }
 .sources li { margin-bottom: 4px; }
 
+.card { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 10px; }
+.card h2 { margin-top: 0; }
+.card .row { display: flex; gap: 6px; font-size: 0.82rem; margin: 3px 0; }
+.card .row b { min-width: 60px; color: #1f3864; }
+.card .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: middle; margin-right: 4px; }
+.card .stops { font-size: 0.75rem; color: #555; max-height: 120px; overflow-y: auto; margin-top: 6px; padding-left: 16px; }
+
 .leaflet-popup-content { font-size: 0.85rem; }
