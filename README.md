@@ -14,12 +14,11 @@ Settings → Pages → Source: `main` branch / root. The app will be available a
 `https://<user>.github.io/kostinbrod-bus/`.
 
 ## Data sources
-- Buses: Kostinbrod municipality (https://kostinbrod.bg/transport) — Line 2
-  Sofia↔Kostinbrod, Sofia–Petarch, Sofia–Dragovishtitsa. Schedule in force
-  since 26.08.2019; summer (Jul–Aug) course cancellations apply.
-- Intercity: Sofia Central Bus Station (https://avtobusi-sofia.com) —
-  Sofia→Kostinbrod at 13:00 and 17:30.
+- Buses: Kostinbrod municipality (https://kostinbrod.bg/transport) — Lines 1–5
+  (Petarch, Kostinbrod, Dragovishtitsa, Tsarichina/Gradets, Chibaovtsi) plus
+  central bus station intercity. Full timetables: see image links in `chatgpt.json`.
 - Trains: BDZh (https://razpisanie.bdz.bg) — Sofia↔Kostinbrod.
+- All schedules are stored in `chatgpt.json` (originally transcribed with ChatGPT).
 - Map tiles: © OpenStreetMap contributors (https://www.openstreetmap.org/copyright).
 - Route geometry: OSRM public routing API.
 

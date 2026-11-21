@@ -1,0 +1,4273 @@
+{
+  "meta": {
+    "version": 1,
+    "timezone": "Europe/Sofia",
+    "source": "kostinbrod.bg printed timetables (see image URLs); text schedules from kostinbrod.bg/archives/22306",
+    "lastUpdated": "2026-11-21",
+    "holidayNote": "Use dayType 'holiday' only for official Bulgarian public holidays that fall on Monday-Friday. Saturday and Sunday always use the weekend timetable, even when they are public holidays. For lines 1, 3 and 4, the published timetable has weekday and holiday columns only; the weekday timetable therefore also applies on Saturdays and Sundays."
+  },
+  "lines": [
+    {
+      "id": "kb-line-1-petarch",
+      "name": "Line 1 — Sofia ↔ Petarch (via Kostinbrod)",
+      "operator": "Общински превози Костинброд ЕООД",
+      "color": "#27ae60",
+      "kind": "bus",
+      "vehicleType": "bus",
+      "notes": "Passes through Kostinbrod. Full timetable: https://kostinbrod.bg/wp-content/uploads/2023/07/IMG_5212.jpg Published weekday timetable also applies on Saturdays and Sundays; holiday timetable applies only to official public holidays falling Monday-Friday. Intermediate stop times are not shown in the source and remain null.",
+      "directions": [
+        {
+          "id": "sofiaToKb",
+          "label": "Sofia → Petarch",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "метро Обеля",
+                  "coord": [
+                    42.7408,
+                    23.2764
+                  ]
+                },
+                {
+                  "name": "Ломско шосе",
+                  "coord": [
+                    42.76,
+                    23.25
+                  ]
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Петърч",
+                  "coord": [
+                    42.87,
+                    23.18
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l1-wd-0-0615",
+                  "times": [
+                    "06:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0645",
+                  "times": [
+                    "06:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0710",
+                  "times": [
+                    "07:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0720",
+                  "times": [
+                    "07:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0740",
+                  "times": [
+                    "07:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0810",
+                  "times": [
+                    "08:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0830",
+                  "times": [
+                    "08:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0855",
+                  "times": [
+                    "08:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0915",
+                  "times": [
+                    "09:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0940",
+                  "times": [
+                    "09:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1010",
+                  "times": [
+                    "10:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1030",
+                  "times": [
+                    "10:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1050",
+                  "times": [
+                    "10:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1115",
+                  "times": [
+                    "11:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1155",
+                  "times": [
+                    "11:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1210",
+                  "times": [
+                    "12:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1240",
+                  "times": [
+                    "12:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1315",
+                  "times": [
+                    "13:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1415",
+                  "times": [
+                    "14:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1445",
+                  "times": [
+                    "14:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1550",
+                  "times": [
+                    "15:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1620",
+                  "times": [
+                    "16:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1640",
+                  "times": [
+                    "16:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1700",
+                  "times": [
+                    "17:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1720",
+                  "times": [
+                    "17:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1750",
+                  "times": [
+                    "17:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1820",
+                  "times": [
+                    "18:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1845",
+                  "times": [
+                    "18:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1910",
+                  "times": [
+                    "19:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1945",
+                  "times": [
+                    "19:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-2015",
+                  "times": [
+                    "20:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-2045",
+                  "times": [
+                    "20:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-2130",
+                  "times": [
+                    "21:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-2230",
+                  "times": [
+                    "22:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "метро Обеля",
+                  "coord": [
+                    42.7408,
+                    23.2764
+                  ]
+                },
+                {
+                  "name": "Ломско шосе",
+                  "coord": [
+                    42.76,
+                    23.25
+                  ]
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Петърч",
+                  "coord": [
+                    42.87,
+                    23.18
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l1-wd-0-0615",
+                  "times": [
+                    "06:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0645",
+                  "times": [
+                    "06:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0710",
+                  "times": [
+                    "07:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0720",
+                  "times": [
+                    "07:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0740",
+                  "times": [
+                    "07:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0810",
+                  "times": [
+                    "08:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0830",
+                  "times": [
+                    "08:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0855",
+                  "times": [
+                    "08:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0915",
+                  "times": [
+                    "09:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-0940",
+                  "times": [
+                    "09:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1010",
+                  "times": [
+                    "10:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1030",
+                  "times": [
+                    "10:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1050",
+                  "times": [
+                    "10:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1115",
+                  "times": [
+                    "11:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1155",
+                  "times": [
+                    "11:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1210",
+                  "times": [
+                    "12:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1240",
+                  "times": [
+                    "12:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1315",
+                  "times": [
+                    "13:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1415",
+                  "times": [
+                    "14:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1445",
+                  "times": [
+                    "14:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1550",
+                  "times": [
+                    "15:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1620",
+                  "times": [
+                    "16:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1640",
+                  "times": [
+                    "16:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1700",
+                  "times": [
+                    "17:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1720",
+                  "times": [
+                    "17:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1750",
+                  "times": [
+                    "17:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1820",
+                  "times": [
+                    "18:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1845",
+                  "times": [
+                    "18:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1910",
+                  "times": [
+                    "19:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-1945",
+                  "times": [
+                    "19:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-2015",
+                  "times": [
+                    "20:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-2045",
+                  "times": [
+                    "20:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-2130",
+                  "times": [
+                    "21:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-0-2230",
+                  "times": [
+                    "22:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "метро Обеля",
+                  "coord": [
+                    42.7408,
+                    23.2764
+                  ]
+                },
+                {
+                  "name": "Ломско шосе",
+                  "coord": [
+                    42.76,
+                    23.25
+                  ]
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Петърч",
+                  "coord": [
+                    42.87,
+                    23.18
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l1-h-0-0645",
+                  "times": [
+                    "06:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-0730",
+                  "times": [
+                    "07:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-0810",
+                  "times": [
+                    "08:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-0900",
+                  "times": [
+                    "09:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1010",
+                  "times": [
+                    "10:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1045",
+                  "times": [
+                    "10:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1145",
+                  "times": [
+                    "11:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1230",
+                  "times": [
+                    "12:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1310",
+                  "times": [
+                    "13:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1415",
+                  "times": [
+                    "14:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1435",
+                  "times": [
+                    "14:35",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1535",
+                  "times": [
+                    "15:35",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1615",
+                  "times": [
+                    "16:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1710",
+                  "times": [
+                    "17:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1740",
+                  "times": [
+                    "17:40",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1830",
+                  "times": [
+                    "18:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-1910",
+                  "times": [
+                    "19:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-2000",
+                  "times": [
+                    "20:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-2100",
+                  "times": [
+                    "21:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-0-2215",
+                  "times": [
+                    "22:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kbToSofia",
+          "label": "Petarch → Sofia",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "Петърч",
+                  "coord": [
+                    42.87,
+                    23.18
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Ломско шосе",
+                  "coord": [
+                    42.76,
+                    23.25
+                  ]
+                },
+                {
+                  "name": "метро Обеля",
+                  "coord": [
+                    42.7408,
+                    23.2764
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l1-wd-1-0445",
+                  "times": [
+                    "04:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0530",
+                  "times": [
+                    "05:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0601",
+                  "times": [
+                    "06:01",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0615",
+                  "times": [
+                    "06:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0630",
+                  "times": [
+                    "06:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0645",
+                  "times": [
+                    "06:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0706",
+                  "times": [
+                    "07:06",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0725",
+                  "times": [
+                    "07:25",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0745",
+                  "times": [
+                    "07:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0810",
+                  "times": [
+                    "08:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0830",
+                  "times": [
+                    "08:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0855",
+                  "times": [
+                    "08:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0925",
+                  "times": [
+                    "09:25",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0950",
+                  "times": [
+                    "09:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1030",
+                  "times": [
+                    "10:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1110",
+                  "times": [
+                    "11:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1131",
+                  "times": [
+                    "11:31",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1150",
+                  "times": [
+                    "11:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1220",
+                  "times": [
+                    "12:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1300",
+                  "times": [
+                    "13:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1330",
+                  "times": [
+                    "13:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1450",
+                  "times": [
+                    "14:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1520",
+                  "times": [
+                    "15:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1555",
+                  "times": [
+                    "15:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1610",
+                  "times": [
+                    "16:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1635",
+                  "times": [
+                    "16:35",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1705",
+                  "times": [
+                    "17:05",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1735",
+                  "times": [
+                    "17:35",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1825",
+                  "times": [
+                    "18:25",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1900",
+                  "times": [
+                    "19:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1930",
+                  "times": [
+                    "19:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-2000",
+                  "times": [
+                    "20:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-2030",
+                  "times": [
+                    "20:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-2101",
+                  "times": [
+                    "21:01",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "Петърч",
+                  "coord": [
+                    42.87,
+                    23.18
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Ломско шосе",
+                  "coord": [
+                    42.76,
+                    23.25
+                  ]
+                },
+                {
+                  "name": "метро Обеля",
+                  "coord": [
+                    42.7408,
+                    23.2764
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l1-wd-1-0445",
+                  "times": [
+                    "04:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0530",
+                  "times": [
+                    "05:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0601",
+                  "times": [
+                    "06:01",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0615",
+                  "times": [
+                    "06:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0630",
+                  "times": [
+                    "06:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0645",
+                  "times": [
+                    "06:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0706",
+                  "times": [
+                    "07:06",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0725",
+                  "times": [
+                    "07:25",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0745",
+                  "times": [
+                    "07:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0810",
+                  "times": [
+                    "08:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0830",
+                  "times": [
+                    "08:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0855",
+                  "times": [
+                    "08:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0925",
+                  "times": [
+                    "09:25",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-0950",
+                  "times": [
+                    "09:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1030",
+                  "times": [
+                    "10:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1110",
+                  "times": [
+                    "11:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1131",
+                  "times": [
+                    "11:31",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1150",
+                  "times": [
+                    "11:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1220",
+                  "times": [
+                    "12:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1300",
+                  "times": [
+                    "13:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1330",
+                  "times": [
+                    "13:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1450",
+                  "times": [
+                    "14:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1520",
+                  "times": [
+                    "15:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1555",
+                  "times": [
+                    "15:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1610",
+                  "times": [
+                    "16:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1635",
+                  "times": [
+                    "16:35",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1705",
+                  "times": [
+                    "17:05",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1735",
+                  "times": [
+                    "17:35",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1825",
+                  "times": [
+                    "18:25",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1900",
+                  "times": [
+                    "19:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-1930",
+                  "times": [
+                    "19:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-2000",
+                  "times": [
+                    "20:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-2030",
+                  "times": [
+                    "20:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-wd-1-2101",
+                  "times": [
+                    "21:01",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "Петърч",
+                  "coord": [
+                    42.87,
+                    23.18
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Ломско шосе",
+                  "coord": [
+                    42.76,
+                    23.25
+                  ]
+                },
+                {
+                  "name": "метро Обеля",
+                  "coord": [
+                    42.7408,
+                    23.2764
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l1-h-1-0601",
+                  "times": [
+                    "06:01",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-0645",
+                  "times": [
+                    "06:45",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-0730",
+                  "times": [
+                    "07:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-0815",
+                  "times": [
+                    "08:15",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-0855",
+                  "times": [
+                    "08:55",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1005",
+                  "times": [
+                    "10:05",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1100",
+                  "times": [
+                    "11:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1150",
+                  "times": [
+                    "11:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1220",
+                  "times": [
+                    "12:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1310",
+                  "times": [
+                    "13:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1350",
+                  "times": [
+                    "13:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1450",
+                  "times": [
+                    "14:50",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1530",
+                  "times": [
+                    "15:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1610",
+                  "times": [
+                    "16:10",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1700",
+                  "times": [
+                    "17:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1730",
+                  "times": [
+                    "17:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1825",
+                  "times": [
+                    "18:25",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-1920",
+                  "times": [
+                    "19:20",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-2000",
+                  "times": [
+                    "20:00",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l1-h-1-2130",
+                  "times": [
+                    "21:30",
+                    null,
+                    null,
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kb-line-2",
+      "name": "Line 2 — Sofia ↔ Kostinbrod",
+      "operator": "Общински превози Костинброд ЕООД",
+      "color": "#e74c3c",
+      "kind": "bus",
+      "vehicleType": "bus",
+      "notes": "Schedule in force 26.08.2019, still current.",
+      "directions": [
+        {
+          "id": "sofiaToKb",
+          "label": "Sofia → Kostinbrod",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l2-wd-0700",
+                  "times": [
+                    "07:00",
+                    "07:30"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-0930",
+                  "times": [
+                    "09:30",
+                    "10:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1115",
+                  "times": [
+                    "11:15",
+                    "11:45"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1330",
+                  "times": [
+                    "13:30",
+                    "14:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1500",
+                  "times": [
+                    "15:00",
+                    "15:30"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1630",
+                  "times": [
+                    "16:30",
+                    "17:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1730",
+                  "times": [
+                    "17:30",
+                    "18:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1830",
+                  "times": [
+                    "18:30",
+                    "19:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1930",
+                  "times": [
+                    "19:30",
+                    "20:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-2030",
+                  "times": [
+                    "20:30",
+                    "21:00"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l2-we-0730",
+                  "times": [
+                    "07:30",
+                    "08:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-0930",
+                  "times": [
+                    "09:30",
+                    "10:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-1330",
+                  "times": [
+                    "13:30",
+                    "14:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-1500",
+                  "times": [
+                    "15:00",
+                    "15:30"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-1800",
+                  "times": [
+                    "18:00",
+                    "18:30"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-2030",
+                  "times": [
+                    "20:30",
+                    "21:00"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": []
+            }
+          ]
+        },
+        {
+          "id": "kbToSofia",
+          "label": "Kostinbrod → Sofia",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l2-wd-0620",
+                  "times": [
+                    "06:20",
+                    "06:50"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-0720",
+                  "times": [
+                    "07:20",
+                    "07:50"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1010",
+                  "times": [
+                    "10:10",
+                    "10:40"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1210",
+                  "times": [
+                    "12:10",
+                    "12:40"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1350",
+                  "times": [
+                    "13:50",
+                    "14:20"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1530",
+                  "times": [
+                    "15:30",
+                    "16:00"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1650",
+                  "times": [
+                    "16:50",
+                    "17:20"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1750",
+                  "times": [
+                    "17:50",
+                    "18:20"
+                  ]
+                },
+                {
+                  "tripId": "l2-wd-1850",
+                  "times": [
+                    "18:50",
+                    "19:20"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l2-we-0555",
+                  "times": [
+                    "05:55",
+                    "06:25"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-0710",
+                  "times": [
+                    "07:10",
+                    "07:40"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-0810",
+                  "times": [
+                    "08:10",
+                    "08:40"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-1010",
+                  "times": [
+                    "10:10",
+                    "10:40"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-1410",
+                  "times": [
+                    "14:10",
+                    "14:40"
+                  ]
+                },
+                {
+                  "tripId": "l2-we-1820",
+                  "times": [
+                    "18:20",
+                    "18:50"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kb-line-3-dragovishtitsa",
+      "name": "Line 3 — Sofia ↔ Dragovishtitsa (via Kostinbrod)",
+      "operator": "Общински превози Костинброд ЕООД",
+      "color": "#9b59b6",
+      "kind": "bus",
+      "vehicleType": "bus",
+      "notes": "Passes through Kostinbrod. Full timetable: https://kostinbrod.bg/wp-content/uploads/2026/09/unnamed-file-scaled.jpg Published weekday timetable also applies on Saturdays and Sundays; holiday timetable applies only to official public holidays falling Monday-Friday. Intermediate stop times are not shown in the source and remain null.",
+      "directions": [
+        {
+          "id": "sofiaToKb",
+          "label": "Sofia → Dragovishtitsa",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Драговищица",
+                  "coord": [
+                    42.9,
+                    23.15
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l3-wd-0-0625",
+                  "times": [
+                    "06:25",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-0710",
+                  "times": [
+                    "07:10",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-0855",
+                  "times": [
+                    "08:55",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1030",
+                  "times": [
+                    "10:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1220",
+                  "times": [
+                    "12:20",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1430",
+                  "times": [
+                    "14:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1615",
+                  "times": [
+                    "16:15",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1650",
+                  "times": [
+                    "16:50",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1740",
+                  "times": [
+                    "17:40",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1900",
+                  "times": [
+                    "19:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-2030",
+                  "times": [
+                    "20:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-2200",
+                  "times": [
+                    "22:00",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Драговищица",
+                  "coord": [
+                    42.9,
+                    23.15
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l3-wd-0-0625",
+                  "times": [
+                    "06:25",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-0710",
+                  "times": [
+                    "07:10",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-0855",
+                  "times": [
+                    "08:55",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1030",
+                  "times": [
+                    "10:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1220",
+                  "times": [
+                    "12:20",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1430",
+                  "times": [
+                    "14:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1615",
+                  "times": [
+                    "16:15",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1650",
+                  "times": [
+                    "16:50",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1740",
+                  "times": [
+                    "17:40",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-1900",
+                  "times": [
+                    "19:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-2030",
+                  "times": [
+                    "20:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-0-2200",
+                  "times": [
+                    "22:00",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Драговищица",
+                  "coord": [
+                    42.9,
+                    23.15
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l3-h-0-0625",
+                  "times": [
+                    "06:25",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-0-1050",
+                  "times": [
+                    "10:50",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-0-1300",
+                  "times": [
+                    "13:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-0-1630",
+                  "times": [
+                    "16:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-0-1750",
+                  "times": [
+                    "17:50",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-0-2100",
+                  "times": [
+                    "21:00",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kbToSofia",
+          "label": "Dragovishtitsa → Sofia",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "Драговищица",
+                  "coord": [
+                    42.9,
+                    23.15
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l3-wd-1-0545",
+                  "times": [
+                    "05:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-0625",
+                  "times": [
+                    "06:25",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-0700",
+                  "times": [
+                    "07:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-0810",
+                  "times": [
+                    "08:10",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-0945",
+                  "times": [
+                    "09:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1135",
+                  "times": [
+                    "11:35",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1315",
+                  "times": [
+                    "13:15",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1530",
+                  "times": [
+                    "15:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1655",
+                  "times": [
+                    "16:55",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1735",
+                  "times": [
+                    "17:35",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1830",
+                  "times": [
+                    "18:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1945",
+                  "times": [
+                    "19:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-2115",
+                  "times": [
+                    "21:15",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "Драговищица",
+                  "coord": [
+                    42.9,
+                    23.15
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l3-wd-1-0545",
+                  "times": [
+                    "05:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-0625",
+                  "times": [
+                    "06:25",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-0700",
+                  "times": [
+                    "07:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-0810",
+                  "times": [
+                    "08:10",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-0945",
+                  "times": [
+                    "09:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1135",
+                  "times": [
+                    "11:35",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1315",
+                  "times": [
+                    "13:15",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1530",
+                  "times": [
+                    "15:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1655",
+                  "times": [
+                    "16:55",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1735",
+                  "times": [
+                    "17:35",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1830",
+                  "times": [
+                    "18:30",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-1945",
+                  "times": [
+                    "19:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-wd-1-2115",
+                  "times": [
+                    "21:15",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "Драговищица",
+                  "coord": [
+                    42.9,
+                    23.15
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l3-h-1-0545",
+                  "times": [
+                    "05:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-1-0700",
+                  "times": [
+                    "07:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-1-0835",
+                  "times": [
+                    "08:35",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-1-1145",
+                  "times": [
+                    "11:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-1-1345",
+                  "times": [
+                    "13:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-1-1545",
+                  "times": [
+                    "15:45",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-1-1715",
+                  "times": [
+                    "17:15",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l3-h-1-1915",
+                  "times": [
+                    "19:15",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kb-line-4-tsarichina",
+      "name": "Line 4 — Sofia ↔ Tsarichina/Gradets (via Kostinbrod)",
+      "operator": "Общински превози Костинброд ЕООД",
+      "color": "#2980b9",
+      "kind": "bus",
+      "vehicleType": "bus",
+      "notes": "Passes through Kostinbrod. Full timetable: https://kostinbrod.bg/wp-content/uploads/2025/02/%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D1%86%D0%B0%D1%80%D0%B8%D1%87%D0%B8%D0%BD%D0%B02.jpg Published weekday timetable also applies on Saturdays and Sundays; holiday timetable applies only to official public holidays falling Monday-Friday. Intermediate stop times are not shown in the source and remain null.",
+      "directions": [
+        {
+          "id": "sofiaToKb",
+          "label": "Sofia → Tsarichina/Gradets",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Gradets",
+                  "coord": [
+                    42.85,
+                    23.17
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Tsarichina",
+                  "coord": [
+                    42.86,
+                    23.16
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l4-wd-0-0750-tsarichina",
+                  "times": [
+                    "07:50",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-0-1050-gradets",
+                  "times": [
+                    "10:50",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Gradets"
+                },
+                {
+                  "tripId": "l4-wd-0-1500-tsarichina",
+                  "times": [
+                    "15:00",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-0-1840-tsarichina",
+                  "times": [
+                    "18:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-0-2000-gradets",
+                  "times": [
+                    "20:00",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Gradets"
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Gradets",
+                  "coord": [
+                    42.85,
+                    23.17
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Tsarichina",
+                  "coord": [
+                    42.86,
+                    23.16
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l4-wd-0-0750-tsarichina",
+                  "times": [
+                    "07:50",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-0-1050-gradets",
+                  "times": [
+                    "10:50",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Gradets"
+                },
+                {
+                  "tripId": "l4-wd-0-1500-tsarichina",
+                  "times": [
+                    "15:00",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-0-1840-tsarichina",
+                  "times": [
+                    "18:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-0-2000-gradets",
+                  "times": [
+                    "20:00",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Gradets"
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Gradets",
+                  "coord": [
+                    42.85,
+                    23.17
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Tsarichina",
+                  "coord": [
+                    42.86,
+                    23.16
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l4-h-0-0750-tsarichina",
+                  "times": [
+                    "07:50",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-h-0-1500-tsarichina",
+                  "times": [
+                    "15:00",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-h-0-1840-tsarichina",
+                  "times": [
+                    "18:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "destinationStop": "Tsarichina"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kbToSofia",
+          "label": "Tsarichina/Gradets → Sofia",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "Tsarichina",
+                  "coord": [
+                    42.86,
+                    23.16
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Gradets",
+                  "coord": [
+                    42.85,
+                    23.17
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l4-wd-1-0657-tsarichina",
+                  "times": [
+                    "06:57",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-1-0840-tsarichina",
+                  "times": [
+                    "08:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-1-1135-gradets",
+                  "times": [
+                    null,
+                    "11:35",
+                    null,
+                    null
+                  ],
+                  "originStop": "Gradets"
+                },
+                {
+                  "tripId": "l4-wd-1-1625-tsarichina",
+                  "times": [
+                    "16:25",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-1-1940-tsarichina",
+                  "times": [
+                    "19:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "Tsarichina",
+                  "coord": [
+                    42.86,
+                    23.16
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Gradets",
+                  "coord": [
+                    42.85,
+                    23.17
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l4-wd-1-0657-tsarichina",
+                  "times": [
+                    "06:57",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-1-0840-tsarichina",
+                  "times": [
+                    "08:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-1-1135-gradets",
+                  "times": [
+                    null,
+                    "11:35",
+                    null,
+                    null
+                  ],
+                  "originStop": "Gradets"
+                },
+                {
+                  "tripId": "l4-wd-1-1625-tsarichina",
+                  "times": [
+                    "16:25",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-wd-1-1940-tsarichina",
+                  "times": [
+                    "19:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "Tsarichina",
+                  "coord": [
+                    42.86,
+                    23.16
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Gradets",
+                  "coord": [
+                    42.85,
+                    23.17
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l4-h-1-0657-tsarichina",
+                  "times": [
+                    "06:57",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-h-1-0840-tsarichina",
+                  "times": [
+                    "08:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-h-1-1625-tsarichina",
+                  "times": [
+                    "16:25",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                },
+                {
+                  "tripId": "l4-h-1-1940-tsarichina",
+                  "times": [
+                    "19:40",
+                    null,
+                    null,
+                    null
+                  ],
+                  "originStop": "Tsarichina"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kb-line-5-chibaovtsi",
+      "name": "Line 5 — Sofia ↔ Chibaovtsi (via Kostinbrod)",
+      "operator": "Общински превози Костинброд ЕООД",
+      "color": "#d35400",
+      "kind": "bus",
+      "vehicleType": "bus",
+      "notes": "Passes through Kostinbrod. Timetable from kostinbrod.bg/archives/22306 (no image linked).",
+      "directions": [
+        {
+          "id": "sofiaToKb",
+          "label": "Sofia → Chibaovtsi",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Chibaovtsi",
+                  "coord": [
+                    42.84,
+                    23.2
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l5-wd-0710",
+                  "times": [
+                    "07:10",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l5-wd-1400",
+                  "times": [
+                    "14:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l5-wd-1820",
+                  "times": [
+                    "18:20",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Chibaovtsi",
+                  "coord": [
+                    42.84,
+                    23.2
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l5-we-0800",
+                  "times": [
+                    "08:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l5-we-1400",
+                  "times": [
+                    "14:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l5-we-1700",
+                  "times": [
+                    "17:00",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "Chibaovtsi",
+                  "coord": [
+                    42.84,
+                    23.2
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": []
+            }
+          ]
+        },
+        {
+          "id": "kbToSofia",
+          "label": "Chibaovtsi → Sofia",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "Chibaovtsi",
+                  "coord": [
+                    42.84,
+                    23.2
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l5-wd-0800",
+                  "times": [
+                    "08:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l5-wd-1500",
+                  "times": [
+                    "15:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l5-wd-1920",
+                  "times": [
+                    "19:20",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "Chibaovtsi",
+                  "coord": [
+                    42.84,
+                    23.2
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "l5-we-0900",
+                  "times": [
+                    "09:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l5-we-1500",
+                  "times": [
+                    "15:00",
+                    null,
+                    null
+                  ]
+                },
+                {
+                  "tripId": "l5-we-1800",
+                  "times": [
+                    "18:00",
+                    null,
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "Chibaovtsi",
+                  "coord": [
+                    42.84,
+                    23.2
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ]
+                },
+                {
+                  "name": "61-во ОУ (Sofia)",
+                  "coord": [
+                    42.7429,
+                    23.2718
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kb-central-bs",
+      "name": "Central bus station — Sofia → Kostinbrod",
+      "operator": "Intercity carrier (Centralna Avtogara)",
+      "color": "#16a085",
+      "kind": "bus",
+      "vehicleType": "bus",
+      "notes": "Departs Sofia Central Bus Station. Only 2 daily departures published; return trips not published.",
+      "directions": [
+        {
+          "id": "sofiaToKb",
+          "label": "Sofia (Central BS) → Kostinbrod",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "Централна автогара София",
+                  "coord": [
+                    42.712,
+                    23.322
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "cbs-wd-1300",
+                  "times": [
+                    "13:00",
+                    null
+                  ]
+                },
+                {
+                  "tripId": "cbs-wd-1730",
+                  "times": [
+                    "17:30",
+                    null
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [
+                {
+                  "name": "Централна автогара София",
+                  "coord": [
+                    42.712,
+                    23.322
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": []
+            },
+            {
+              "type": "holiday",
+              "stops": [
+                {
+                  "name": "Централна автогара София",
+                  "coord": [
+                    42.712,
+                    23.322
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд център",
+                  "coord": [
+                    42.816,
+                    23.218
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": []
+            }
+          ]
+        },
+        {
+          "id": "kbToSofia",
+          "label": "Kostinbrod → Sofia (Central BS)",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [],
+              "trips": [],
+              "notes": "return trips not published"
+            },
+            {
+              "type": "weekend",
+              "stops": [],
+              "trips": []
+            },
+            {
+              "type": "holiday",
+              "stops": [],
+              "trips": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "trains": [
+    {
+      "id": "bdzh-sofia-kostinbrod",
+      "name": "BDZh train — Sofia ↔ Kostinbrod",
+      "operator": "БДЖ - Пътнически превози",
+      "color": "#2c3e50",
+      "kind": "train",
+      "vehicleType": "train",
+      "source": "razpisanie.bdz.bg (21 Nov 2026)",
+      "directions": [
+        {
+          "id": "sofiaToKb",
+          "label": "Sofia → Kostinbrod",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [
+                {
+                  "name": "София централна гара",
+                  "coord": [
+                    42.712,
+                    23.319
+                  ],
+                  "notes": "terminal"
+                },
+                {
+                  "name": "Костинброд",
+                  "coord": [
+                    42.823,
+                    23.224
+                  ],
+                  "notes": "terminal"
+                }
+              ],
+              "trips": [
+                {
+                  "tripId": "tr-wd-0520",
+                  "times": [
+                    "05:20",
+                    "05:45"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-0720",
+                  "times": [
+                    "07:20",
+                    "07:45"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-1030",
+                  "times": [
+                    "10:30",
+                    "10:56"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-1320",
+                  "times": [
+                    "13:20",
+                    "13:46"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-1505",
+                  "times": [
+                    "15:05",
+                    "15:37"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-1738",
+                  "times": [
+                    "17:38",
+                    "18:04"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-1915",
+                  "times": [
+                    "19:15",
+                    "19:41"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-2055",
+                  "times": [
+                    "20:55",
+                    "21:22"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [],
+              "trips": []
+            },
+            {
+              "type": "holiday",
+              "stops": [],
+              "trips": []
+            }
+          ]
+        },
+        {
+          "id": "kbToSofia",
+          "label": "Kostinbrod → Sofia",
+          "dayTypes": [
+            {
+              "type": "weekday",
+              "stops": [],
+              "trips": [
+                {
+                  "tripId": "tr-wd-0623",
+                  "times": [
+                    "06:23",
+                    "06:50"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-0725",
+                  "times": [
+                    "07:25",
+                    "07:50"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-0957",
+                  "times": [
+                    "09:57",
+                    "10:23"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-1227",
+                  "times": [
+                    "12:27",
+                    "12:53"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-1517",
+                  "times": [
+                    "15:17",
+                    "15:42"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-1708",
+                  "times": [
+                    "17:08",
+                    "17:33"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-2025",
+                  "times": [
+                    "20:25",
+                    "20:50"
+                  ]
+                },
+                {
+                  "tripId": "tr-wd-2208",
+                  "times": [
+                    "22:08",
+                    "22:34"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "weekend",
+              "stops": [],
+              "trips": []
+            },
+            {
+              "type": "holiday",
+              "stops": [],
+              "trips": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
