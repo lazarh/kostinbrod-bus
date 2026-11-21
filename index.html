@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-<title>Sofia ↔ Kostinbrod Bus & Train Tracker</title>
-<meta name="description" content="Approximate live positions of buses and trains between Sofia and Kostinbrod, from public timetables on an OpenStreetMap map." />
+<title>Костинброд — Автобуси на живо</title>
+<meta name="description" content="Реално-времеви позиции на автобусите на Община Костинброд на OpenStreetMap карта." />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-<link rel="stylesheet" href="styles.css?v=3" />
+<link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
 <header>
-  <h1>Sofia ↔ Kostinbrod Tracker</h1>
+  <h1>Костинброд — Автобуси на живо</h1>
   <div class="meta">
     <span id="now"></span>
-    <span class="badge">Approximate positions from public timetables — not real-time GPS</span>
+    <span id="liveStatus" class="badge">Свързване…</span>
   </div>
 </header>
 
@@ -24,65 +24,38 @@
   <div id="map"></div>
   <aside>
     <section class="controls">
-      <label>Line:
-        <select id="lineFilter">
-          <option value="all">All lines</option>
-        </select>
+      <label>Линия:
+        <select id="lineFilter"><option value="all">Всички линии</option></select>
       </label>
-      <label>Direction:
-        <select id="dirFilter">
-          <option value="both">Both directions</option>
-          <option value="sofiaToKb">Sofia → Kostinbrod</option>
-          <option value="kbToSofia">Kostinbrod → Sofia</option>
-        </select>
-      </label>
-      <label>Show:
-        <label class="chk"><input type="checkbox" id="showBuses" checked> Buses</label>
-      </label>
-      <label>Day type:
-        <select id="dayType">
-          <option value="auto">Auto (today)</option>
-          <option value="weekday">Weekday</option>
-          <option value="weekend">Weekend</option>
-        </select>
-      </label>
-    </section>
-
-    <section id="lineCard" class="card">
-      <h2>Selected line</h2>
-      <div id="lineCardInner" class="sub">Select a line above to see its route and terminals.</div>
+      <label><input type="checkbox" id="showVehicles" checked> Показвай автобусите</label>
     </section>
 
     <section>
-      <h2>On the way now</h2>
+      <h2>На път сега</h2>
       <ul id="activeList" class="list"></ul>
     </section>
 
     <section>
-      <h2>Upcoming departures</h2>
+      <h2>Следващи тръгвания</h2>
       <ul id="upcomingList" class="list"></ul>
     </section>
 
     <section class="legend">
-      <h2>Legend</h2>
+      <h2>Легенда</h2>
       <div id="legendItems"></div>
     </section>
 
     <section class="sources">
-      <h2>Sources</h2>
+      <h2>Източник</h2>
       <ul>
-        <li>Buses: Kostinbrod municipality (kostinbrod.bg) — Line 2, Sofia–Petarch, Sofia–Dragovishtitsa.</li>
-        <li>Intercity: Central bus station (avtobusi-sofia.com) 13:00 / 17:30.</li>
-        <li>Trains: BDZh (razpisanie.bdz.bg).</li>
-        <li>Map: © OpenStreetMap contributors. Routing: OSRM.</li>
-        <li>Trip durations are estimates (~30 min bus, ~26 min train).</li>
+        <li>Данни в реално време: <a href="https://live.transport.kostinbrod.bg" target="_blank">live.transport.kostinbrod.bg</a> (GPS, маршрути, разписания).</li>
+        <li>Карта: © OpenStreetMap contributors.</li>
       </ul>
     </section>
   </aside>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="data.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

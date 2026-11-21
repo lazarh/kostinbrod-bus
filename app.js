@@ -1,7 +1,7 @@
 (function () {
   'use strict';
-  const D = window.KB_DATA;
-  if (!D) { console.error('data.js not loaded'); return; }
+  const API = 'https://live.transport.kostinbrod.bg';
+  const POLL_MS = 15000;
 
   const map = L.map('map');
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -9,323 +9,205 @@
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  const sofia = [42.7429, 23.2718];
-  const kb = [42.8160, 23.2180];
-  const allPts = [[sofia, kb]];
-  D.lines.forEach(l => l.directions.forEach(dd => dd.dayTypes.forEach(dt => (dt.stops||[]).forEach(s => { if (s.coord) allPts.push([s.coord]); }))));
-  (D.trains||[]).forEach(t => t.directions.forEach(dd => dd.dayTypes.forEach(dt => (dt.stops||[]).forEach(s => { if (s.coord) allPts.push([s.coord]); }))));
-  const flat = allPts.flat();
-  map.fitBounds(L.latLngBounds(flat).pad(0.15));
-
-  // Per-line polylines (each line.polyline is [lat,lng] Sofia->destination)
-  const polyCache = new Map();
-  function getPoly(line) {
-    if (!line) return null;
-    if (polyCache.has(line.id)) return polyCache.get(line.id);
-    const p = line.polyline || D.ROUTE_POLYLINE;
-    const fwd = p;
-    const rev = p.slice().reverse();
-    const cumF = cumDist(fwd);
-    const cumR = cumDist(rev);
-    const obj = { fwd, rev, cumF, totalF: cumF[cumF.length-1], cumR, totalR: cumR[cumR.length-1] };
-    polyCache.set(line.id, obj);
-    return obj;
-  }
-  function cumDist(coords) {
-    const d = [0];
-    for (let i = 1; i < coords.length; i++) d.push(d[i-1] + L.latLng(coords[i-1]).distanceTo(L.latLng(coords[i])));
-    return d;
-  }
-  function pointAlong(coords, cum, total, frac) {
-    frac = Math.max(0, Math.min(1, frac));
-    const target = frac * total;
-    let i = 0;
-    while (i < cum.length - 1 && cum[i+1] < target) i++;
-    if (i >= coords.length - 1) i = coords.length - 2;
-    const segLen = cum[i+1] - cum[i];
-    const t = segLen > 0 ? (target - cum[i]) / segLen : 0;
-    return [coords[i][0] + (coords[i+1][0]-coords[i][0])*t,
-            coords[i][1] + (coords[i+1][1]-coords[i][1])*t];
-  }
-
   const routeLayer = L.layerGroup().addTo(map);
-
-  function updateRoutes() {
-    routeLayer.clearLayers();
-    const selLine = state.lineFilter !== 'all' ? findLine(state.lineFilter) : null;
-    const linesToShow = selLine ? [selLine] : allLines();
-    linesToShow.forEach(l => {
-      const po = getPoly(l);
-      if (!po) return;
-      L.polyline(po.fwd, { color: l.color, weight: selLine ? 6 : 3, opacity: selLine ? 0.9 : 0.6 }).addTo(routeLayer);
-    });
-  }
-
-  const busLayer = L.layerGroup().addTo(map);
-  const trainLayer = L.layerGroup().addTo(map);
-  // stop markers
   const stopLayer = L.layerGroup().addTo(map);
+  const vehicleLayer = L.layerGroup().addTo(map);
 
-  const state = { dayType: 'auto', dirFilter: 'both', showBuses: true, showTrains: true, lineFilter: 'all' };
+  let network = null;   // {stops: Map, routes: Map, baseRoutes: Map name->route}
+  let vehicles = new Map(); // plate -> marker
+  let selectedRouteLayers = new Map(); // routeKey -> layer (for active vehicles)
+  const state = { lineFilter: 'all', showVehicles: true };
 
-  function allLines() { return [...D.lines, ...(D.trains || [])]; }
-  function findLine(id) { return allLines().find(l => l.id === id); }
-
-  function toMin(hhmm) { const [h,m] = hhmm.split(':').map(Number); return h*60+m; }
-  function nowMin() { const n = new Date(); return n.getHours()*60 + n.getMinutes() + n.getSeconds()/60; }
-  function isWeekend(d) { const day = d.getDay(); return day === 0 || day === 6; }
-  function isHoliday(d) {
-    const iso = d.toISOString().slice(0,10);
-    return (D.BULGARIAN_HOLIDAYS || []).indexOf(iso) >= 0;
-  }
-  function resolveDayType() {
-    if (state.dayType !== 'auto') return state.dayType;
-    const d = new Date();
-    if (isHoliday(d)) return 'holiday';
-    if (isWeekend(d)) return 'weekend';
-    return 'weekday';
-  }
-
-  function findDir(line, dirId) {
-    return (line.directions || []).find(dd => dd.id === dirId);
-  }
-  function findBlock(dir, dt) {
-    if (!dir) return null;
-    let block = (dir.dayTypes || []).find(b => b.type === dt);
-    if (!block || !block.trips || block.trips.length === 0) {
-      // fallback to weekday
-      block = (dir.dayTypes || []).find(b => b.type === 'weekday');
-    }
-    return block;
-  }
-
-  function defaultDur(line) {
-    if (line.kind === 'train') return 26;
-    return 30;
-  }
-
-  // Build trip list for the resolved day
-  function buildTrips() {
-    const dt = resolveDayType();
-    const trips = [];
-    const allLines = [...D.lines, { ...D.trains[0], kind: 'train' }]; // trains wrapped? trains is array
-    // handle trains separately
-    const lines = D.lines.map(l => ({...l, _isTrain: false}));
-    const trains = (D.trains || []).map(t => ({...t, kind: 'train', _isTrain: true}));
-
-    const processLine = (line) => {
-      if (state.lineFilter !== 'all' && line.id !== state.lineFilter) return;
-      const isTrain = line.kind === 'train' || line._isTrain;
-      ['sofiaToKb','kbToSofia'].forEach(dirId => {
-        if (state.dirFilter !== 'both' && state.dirFilter !== dirId) return;
-        if (isTrain && !state.showTrains) return;
-        if (!isTrain && !state.showBuses) return;
-        const dir = findDir(line, dirId);
-        const block = findBlock(dir, dt);
-        if (!block || !block.trips) return;
-        const stops = block.stops || [];
-        block.trips.forEach(trip => {
-          // collect non-null time points
-          const pts = [];
-          (trip.times || []).forEach((t, i) => { if (t) pts.push({ i, m: toMin(t) }); });
-          // apply originStop/destinationStop
-          let originIdx = 0, destIdx = stops.length - 1;
-          if (trip.originStop) {
-            const idx = stops.findIndex(s => s.name === trip.originStop);
-            if (idx >= 0) originIdx = idx;
-          }
-          if (trip.destinationStop) {
-            const idx = stops.findIndex(s => s.name === trip.destinationStop);
-            if (idx >= 0) destIdx = idx;
-          }
-          const segPts = pts.filter(p => p.i >= originIdx && p.i <= destIdx);
-          let originMin, arrMin;
-          if (segPts.length >= 2) {
-            originMin = segPts[0].m;
-            arrMin = segPts[segPts.length-1].m;
-            if (arrMin <= originMin) arrMin = originMin + defaultDur(line);
-          } else if (segPts.length === 1) {
-            originMin = segPts[0].m;
-            const frac = stops.length > 1 ? (destIdx / (stops.length - 1)) : 1;
-            arrMin = originMin + Math.max(5, defaultDur(line) * (frac > 0 ? frac : 1));
-          } else {
-            // no times; skip
-            return;
-          }
-          trips.push({
-            line, dir: dirId, trip, stops, block,
-            originMin, arrMin, originIdx, destIdx, segPts,
-            color: line.color, kind: isTrain ? 'train' : 'bus',
-            destination: trip.destinationStop || (stops[destIdx] && stops[destIdx].name) || ''
-          });
-        });
-      });
-    };
-
-    lines.forEach(processLine);
-    trains.forEach(processLine);
-    return trips;
-  }
-
-  function stopFrac(stopIdx, nStops) {
-    if (nStops <= 1) return 0;
-    return Math.max(0, Math.min(1, stopIdx / (nStops - 1)));
-  }
-
-  function tripPosition(trip, now) {
-    const { originMin, arrMin, segPts, stops, originIdx, destIdx } = trip;
-    if (now < originMin || now > arrMin) return null;
-    const fracTime = (now - originMin) / (arrMin - originMin);
-    // map to corridor fraction using segPts if available
-    let fracSpace;
-    if (segPts.length >= 2) {
-      // interpolate between consecutive segPts
-      // find interval
-      let i = 0;
-      while (i < segPts.length - 1 && segPts[i+1].m < now) i++;
-      if (i >= segPts.length - 1) i = segPts.length - 2;
-      const p0 = segPts[i], p1 = segPts[i+1];
-      const t = (p1.m - p0.m) > 0 ? (now - p0.m) / (p1.m - p0.m) : 0;
-      const f0 = stopFrac(p0.i, stops.length);
-      const f1 = stopFrac(p1.i, stops.length);
-      fracSpace = f0 + (f1 - f0) * t;
-    } else {
-      // single known time: estimate along corridor, but clamp to destination stop
-      const destFrac = stopFrac(trip.destIdx, trip.stops.length);
-      fracSpace = Math.min(fracTime, destFrac > 0 ? destFrac : 1);
-    }
-    const po = getPoly(trip.line);
-    const coords = trip.dir === 'sofiaToKb' ? po.fwd : po.rev;
-    const cum = trip.dir === 'sofiaToKb' ? po.cumF : po.cumR;
-    const total = trip.dir === 'sofiaToKb' ? po.totalF : po.totalR;
-    return pointAlong(coords, cum, total, fracSpace);
-  }
-
-  // Draw stop markers (termini + any with coords)
-  const drawnStops = new Set();
-  D.lines.forEach(line => {
-    line.directions.forEach(dd => {
-      dd.dayTypes.forEach(dt => {
-        (dt.stops || []).forEach(s => {
-          if (!s.coord) return;
-          const key = s.name + s.coord.join(',');
-          if (drawnStops.has(key)) return;
-          drawnStops.add(key);
-          L.circleMarker(s.coord, { radius: 4, fillColor: '#555', color: '#fff', weight: 1, fillOpacity: 0.8 })
-            .addTo(stopLayer).bindPopup(`<b>${s.name}</b>${s.code ? ' ('+s.code+')' : ''}`);
-        });
-      });
+  // ---------- network ----------
+  async function loadNetwork() {
+    const res = await fetch(API + '/api/network', { headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error('network ' + res.status);
+    const data = await res.json();
+    const stops = new Map();
+    data.stops.forEach(s => stops.set(s.id, s));
+    const routes = new Map();
+    data.routes.forEach(r => routes.set(r.routeKey, r));
+    // one representative route per distinct routeName (prefer shortest routeKey = base)
+    const byName = new Map();
+    data.routes.forEach(r => {
+      const cur = byName.get(r.name);
+      if (!cur || r.routeKey.length < cur.routeKey.length) byName.set(r.name, r);
     });
-  });
+    network = { stops, routes, baseRoutes: byName, revision: data.revision };
+    renderStops();
+    renderRoutes();
+    populateLineFilter();
+  }
 
-  function render() {
-    busLayer.clearLayers();
-    trainLayer.clearLayers();
-    // highlight selected line on the route
-    updateRoutes();
-    updateLineCard();
+  function renderStops() {
+    stopLayer.clearLayers();
+    network.stops.forEach(s => {
+      L.circleMarker([s.latitude, s.longitude], { radius: 3, fillColor: '#555', color: '#fff', weight: 1, fillOpacity: 0.8 })
+        .addTo(stopLayer).bindPopup('<b>' + s.name + '</b>');
+    });
+  }
 
-    const now = nowMin();
-    const trips = buildTrips();
-    const active = [];
-    const upcoming = [];
+  function renderRoutes() {
+    routeLayer.clearLayers();
+    selectedRouteLayers.clear();
+    const toDraw = state.lineFilter === 'all'
+      ? [...network.baseRoutes.values()]
+      : [network.baseRoutes.get(state.lineFilter)].filter(Boolean);
+    toDraw.forEach(r => {
+      L.polyline(r.geometry.map(p => [p.latitude, p.longitude]), {
+        color: '#' + (r.color || '3366CC'), weight: 3, opacity: 0.5
+      }).addTo(routeLayer);
+    });
+    // fit bounds once
+    if (!map._fitted) {
+      const pts = [];
+      network.stops.forEach(s => pts.push([s.latitude, s.longitude]));
+      if (pts.length) { map.fitBounds(L.latLngBounds(pts).pad(0.1)); map._fitted = true; }
+    }
+  }
 
-    trips.forEach(trip => {
-      const pos = tripPosition(trip, now);
-      if (pos) {
-        const marker = L.circleMarker(pos, { radius: 7, fillColor: trip.color, color: '#fff', weight: 2, fillOpacity: 0.9 });
-        const dep = trip.originMin;
-        const depStr = `${Math.floor(dep/60)}:${String(dep%60).padStart(2,'0')}`;
-        const eta = Math.round(trip.arrMin - now);
-        marker.bindPopup(`<b>${trip.line.name}</b><br>${trip.dir==='sofiaToKb'?'Sofia → Kostinbrod':'Kostinbrod → Sofia'}<br>→ ${trip.destination}<br>Dep ${depStr} · ~${eta} min left`);
-        (trip.kind === 'bus' ? busLayer : trainLayer).addLayer(marker);
-        active.push({ trip, eta });
-      } else if (trip.originMin > now && trip.originMin - now <= 180) {
-        upcoming.push({ trip, inMin: Math.round(trip.originMin - now) });
+  function populateLineFilter() {
+    const sel = document.getElementById('lineFilter');
+    // clear except first
+    while (sel.options.length > 1) sel.remove(1);
+    [...network.baseRoutes.keys()].sort().forEach(name => {
+      const opt = document.createElement('option');
+      opt.value = name; opt.textContent = name;
+      sel.appendChild(opt);
+    });
+    // legend
+    const legend = document.getElementById('legendItems');
+    legend.innerHTML = '';
+    network.baseRoutes.forEach((r, name) => {
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerHTML = `<span class="swatch" style="background:#${r.color}"></span>${name}`;
+      legend.appendChild(div);
+    });
+  }
+
+  // ---------- fleet ----------
+  async function pollFleet() {
+    try {
+      const res = await fetch(API + '/api/fleet', { headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error('fleet ' + res.status);
+      const data = await res.json();
+      updateVehicles(data.vehicles || []);
+      updateActiveList(data.vehicles || []);
+      document.getElementById('liveStatus').textContent = 'На живо · ' + new Date(data.generatedAt).toLocaleTimeString();
+      document.getElementById('liveStatus').className = 'badge live';
+    } catch (e) {
+      console.warn('fleet fetch failed', e);
+      document.getElementById('liveStatus').textContent = 'Няма връзка';
+      document.getElementById('liveStatus').className = 'badge';
+    }
+    document.getElementById('now').textContent = 'Обновено: ' + new Date().toLocaleTimeString();
+  }
+
+  function makeIcon(v) {
+    const color = '#' + (v.routeColor || '3366CC');
+    const html = `<div style="width:16px;height:16px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 0 4px #000;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:bold;">${(v.plate||'').slice(-2)}</div>`;
+    return L.divIcon({ html, className: '', iconSize: [16,16], iconAnchor: [8,8] });
+  }
+
+  function makePopup(v) {
+    const dep = v.departure ? new Date(v.departure).toLocaleTimeString() : '—';
+    const arr = v.plannedArrival ? new Date(v.plannedArrival).toLocaleTimeString() : '—';
+    const age = v.recordedAt ? Math.round((Date.now() - new Date(v.recordedAt)) / 1000) : '?';
+    const dev = v.departureSeconds != null && v.recordedAt
+      ? '' : '';
+    return `<b>${v.plate}</b><br>${v.routeName}<br>Скорост: ${v.speedKph} km/h · посока ${v.bearingDegrees}°<br>Тръгване: ${dep} · Пристигане: ${arr}<br>GPS сигнал: преди ${age} s`;
+  }
+
+  function updateVehicles(list) {
+    if (!state.showVehicles) { vehicleLayer.clearLayers(); vehicles.clear(); return; }
+    const seen = new Set();
+    list.forEach(v => {
+      if (state.lineFilter !== 'all' && v.routeName !== state.lineFilter) return;
+      seen.add(v.plate);
+      const latlng = [v.latitude, v.longitude];
+      let m = vehicles.get(v.plate);
+      if (!m) {
+        m = L.marker(latlng, { icon: makeIcon(v) }).addTo(vehicleLayer);
+        vehicles.set(v.plate, m);
+      } else {
+        m.setLatLng(latlng);
       }
+      m.setIcon(makeIcon(v));
+      m.bindPopup(makePopup(v));
     });
-
-    active.sort((a,b) => a.trip.originMin - b.trip.originMin);
-    upcoming.sort((a,b) => a.trip.originMin - b.trip.originMin);
-
-    const activeList = document.getElementById('activeList');
-    activeList.innerHTML = '';
-    if (active.length === 0) activeList.innerHTML = '<li class="sub">No vehicles currently on the way.</li>';
-    active.forEach(a => {
-      const li = document.createElement('li'); li.className = 'active';
-      const dep = `${Math.floor(a.trip.originMin/60)}:${String(a.trip.originMin%60).padStart(2,'0')}`;
-      li.innerHTML = `<div class="line" style="color:${a.trip.color}">${a.trip.line.name}</div><div class="sub">${a.trip.dir==='sofiaToKb'?'Sofia → Kostinbrod':'Kostinbrod → Sofia'} · → ${a.trip.destination} · dep ${dep} · ~${a.eta} min left</div>`;
-      activeList.appendChild(li);
-    });
-
-    const upcomingList = document.getElementById('upcomingList');
-    upcomingList.innerHTML = '';
-    if (upcoming.length === 0) upcomingList.innerHTML = '<li class="sub">No departures in next 3 hours.</li>';
-    upcoming.forEach(u => {
-      const li = document.createElement('li');
-      const dep = `${Math.floor(u.trip.originMin/60)}:${String(u.trip.originMin%60).padStart(2,'0')}`;
-      li.innerHTML = `<div class="line" style="color:${u.trip.color}">${u.trip.line.name}</div><div class="sub">${u.trip.dir==='sofiaToKb'?'Sofia → Kostinbrod':'Kostinbrod → Sofia'} · → ${u.trip.destination} · ${dep} (in ${u.inMin} min)</div>`;
-      upcomingList.appendChild(li);
-    });
-
-    document.getElementById('now').textContent = `Now: ${new Date().toLocaleTimeString()} · ${resolveDayType()}`;
-  }
-
-  // Legend
-  const legend = document.getElementById('legendItems');
-  const seen = new Set();
-  [...D.lines, ...(D.trains || [])].forEach(l => {
-    if (seen.has(l.id)) return; seen.add(l.id);
-    const div = document.createElement('div');
-    div.className = 'item';
-    div.innerHTML = `<span class="swatch" style="background:${l.color}"></span>${l.name}`;
-    legend.appendChild(div);
-  });
-
-  // Line filter dropdown
-  const lineSel = document.getElementById('lineFilter');
-  allLines().forEach(l => {
-    const opt = document.createElement('option');
-    opt.value = l.id;
-    opt.textContent = l.name;
-    lineSel.appendChild(opt);
-  });
-
-  function updateLineCard() {
-    const inner = document.getElementById('lineCardInner');
-    if (state.lineFilter === 'all') {
-      inner.innerHTML = 'Select a line above to see its route and terminals.';
-      return;
+    for (const [plate, m] of vehicles) {
+      if (!seen.has(plate)) { vehicleLayer.removeLayer(m); vehicles.delete(plate); }
     }
-    const line = findLine(state.lineFilter);
-    if (!line) { inner.innerHTML = 'Unknown line.'; return; }
-    // gather terminals per direction from first dayType block
-    const dirs = (line.directions || []).map(dd => {
-      const block = (dd.dayTypes || []).find(b => b.type === 'weekday') || (dd.dayTypes || [])[0];
-      const stops = (block && block.stops) || [];
-      const start = stops.length ? stops[0].name : '—';
-      const end = stops.length ? stops[stops.length-1].name : '—';
-      return { label: dd.label || dd.id, start, end, n: stops.length };
-    });
-    const rows = dirs.map(d => `<div class="row"><b>${d.label}</b><span>${d.start} → ${d.end}</span></div>`).join('');
-    const stops0 = (((line.directions[0]||{}).dayTypes||[]).find(b=>b.type==='weekday')||{}).stops || [];
-    const stopsHtml = stops0.length ? `<div class="stops"><b>Stops:</b> ${stops0.map(s=>s.name).join(' · ')}</div>` : '';
-    const imgHtml = line.image ? `<img src="${line.image}" alt="${line.name}" style="width:100%;border-radius:4px;margin-bottom:6px;" />` : '';
-    inner.innerHTML = `
-      ${imgHtml}
-      <div class="row"><b>Line</b><span><span class="swatch" style="background:${line.color}"></span>${line.name}</span></div>
-      <div class="row"><b>Operator</b><span>${line.operator || '—'}</span></div>
-      ${rows}
-      ${line.notes ? `<div class="row"><b>Notes</b><span>${line.notes}</span></div>` : ''}
-      ${stopsHtml}
-    `;
   }
 
-  document.getElementById('lineFilter').addEventListener('change', e => { state.lineFilter = e.target.value; render(); });
-  document.getElementById('dirFilter').addEventListener('change', e => { state.dirFilter = e.target.value; render(); });
-  document.getElementById('showBuses').addEventListener('change', e => { state.showBuses = e.target.checked; render(); });
-  document.getElementById('dayType').addEventListener('change', e => { state.dayType = e.target.value; render(); });
+  function updateActiveList(list) {
+    const filtered = state.lineFilter === 'all' ? list : list.filter(v => v.routeName === state.lineFilter);
+    const ul = document.getElementById('activeList');
+    ul.innerHTML = '';
+    if (filtered.length === 0) { ul.innerHTML = '<li class="sub">Няма активни автобуси.</li>'; return; }
+    filtered.forEach(v => {
+      const li = document.createElement('li');
+      const age = v.recordedAt ? Math.round((Date.now() - new Date(v.recordedAt)) / 1000) : '?';
+      li.innerHTML = `<div class="line" style="color:#${v.routeColor}">${v.plate} · ${v.routeName}</div><div class="sub">${v.speedKph} km/h · GPS преди ${age}s · ${v.hasActiveTrip ? 'по разписание' : 'без курс'}</div>`;
+      li.addEventListener('click', () => {
+        const m = vehicles.get(v.plate);
+        if (m) { map.setView(m.getLatLng(), 15); m.openPopup(); }
+      });
+      ul.appendChild(li);
+    });
+  }
 
-  render();
-  setInterval(render, 30000);
+  // ---------- schedule / upcoming ----------
+  async function loadSchedule() {
+    try {
+      const res = await fetch(API + '/api/schedule', { headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error('schedule ' + res.status);
+      const data = await res.json();
+      renderUpcoming(data);
+    } catch (e) { console.warn('schedule fetch failed', e); }
+  }
+
+  function renderUpcoming(data) {
+    const now = Date.now();
+    const horizon = now + 3 * 3600 * 1000;
+    const items = [];
+    (data.lanes || []).forEach(lane => {
+      (lane.trips || []).forEach(t => {
+        const dep = new Date(data.serviceDate + 'T00:00:00Z').getTime() + t.departureSeconds * 1000;
+        if (dep < now - 60000 || dep > horizon) return;
+        if (state.lineFilter !== 'all' && t.routeName !== state.lineFilter) return;
+        items.push({ t, lane, dep });
+      });
+    });
+    items.sort((a, b) => a.dep - b.dep);
+    const ul = document.getElementById('upcomingList');
+    ul.innerHTML = '';
+    if (items.length === 0) { ul.innerHTML = '<li class="sub">Няма тръгвания в следващите 3 часа.</li>'; return; }
+    items.slice(0, 40).forEach(it => {
+      const li = document.createElement('li');
+      const depStr = new Date(it.dep).toLocaleTimeString();
+      const arrStr = new Date(it.dep + (it.t.plannedArrivalSeconds - it.t.departureSeconds) * 1000).toLocaleTimeString();
+      li.innerHTML = `<div class="line" style="color:#${it.t.routeColor}">${it.t.routeName}</div><div class="sub">${it.t.origin} → ${it.t.destination} · ${depStr} – ${arrStr} · ${it.lane.plate}</div>`;
+      ul.appendChild(li);
+    });
+  }
+
+  // ---------- controls ----------
+  document.getElementById('lineFilter').addEventListener('change', e => { state.lineFilter = e.target.value; renderRoutes(); pollFleet(); loadSchedule(); });
+  document.getElementById('showVehicles').addEventListener('change', e => { state.showVehicles = e.target.checked; if (!state.showVehicles) { vehicleLayer.clearLayers(); vehicles.clear(); } else { pollFleet(); } });
+
+  // ---------- boot ----------
+  (async () => {
+    try {
+      await loadNetwork();
+    } catch (e) {
+      console.error('network load failed', e);
+      document.getElementById('liveStatus').textContent = 'Грешка при зареждане на мрежата';
+    }
+    await pollFleet();
+    await loadSchedule();
+    setInterval(pollFleet, POLL_MS);
+    setInterval(loadSchedule, 60000);
+  })();
 })();
