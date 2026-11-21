@@ -48,10 +48,18 @@
             coords[i][1] + (coords[i+1][1]-coords[i][1])*t];
   }
 
-  const corridorPoly = D.ROUTE_POLYLINE;
-  const routeLine = L.polyline(corridorPoly, { color: '#1f3864', weight: 4, opacity: 0.55 }).addTo(map);
-  L.marker(sofia).addTo(map).bindPopup('<b>Sofia</b><br>Obelya / 61-во ОУ');
-  L.marker(kb).addTo(map).bindPopup('<b>Kostinbrod</b><br>centre');
+  const routeLayer = L.layerGroup().addTo(map);
+
+  function updateRoutes() {
+    routeLayer.clearLayers();
+    const selLine = state.lineFilter !== 'all' ? findLine(state.lineFilter) : null;
+    const linesToShow = selLine ? [selLine] : allLines();
+    linesToShow.forEach(l => {
+      const po = getPoly(l);
+      if (!po) return;
+      L.polyline(po.fwd, { color: l.color, weight: selLine ? 6 : 3, opacity: selLine ? 0.9 : 0.6 }).addTo(routeLayer);
+    });
+  }
 
   const busLayer = L.layerGroup().addTo(map);
   const trainLayer = L.layerGroup().addTo(map);
@@ -138,7 +146,8 @@
             if (arrMin <= originMin) arrMin = originMin + defaultDur(line);
           } else if (segPts.length === 1) {
             originMin = segPts[0].m;
-            arrMin = originMin + defaultDur(line);
+            const frac = stops.length > 1 ? (destIdx / (stops.length - 1)) : 1;
+            arrMin = originMin + Math.max(5, defaultDur(line) * (frac > 0 ? frac : 1));
           } else {
             // no times; skip
             return;
@@ -181,7 +190,9 @@
       const f1 = stopFrac(p1.i, stops.length);
       fracSpace = f0 + (f1 - f0) * t;
     } else {
-      fracSpace = fracTime; // full corridor
+      // single known time: estimate along corridor, but clamp to destination stop
+      const destFrac = stopFrac(trip.destIdx, trip.stops.length);
+      fracSpace = Math.min(fracTime, destFrac > 0 ? destFrac : 1);
     }
     const po = getPoly(trip.line);
     const coords = trip.dir === 'sofiaToKb' ? po.fwd : po.rev;
@@ -211,11 +222,7 @@
     busLayer.clearLayers();
     trainLayer.clearLayers();
     // highlight selected line on the route
-    const selLine = state.lineFilter !== 'all' ? findLine(state.lineFilter) : null;
-    const po = selLine ? getPoly(selLine) : null;
-    const newCoords = po ? po.fwd : corridorPoly;
-    routeLine.setLatLngs(newCoords);
-    routeLine.setStyle({ color: selLine ? selLine.color : '#1f3864', weight: selLine ? 6 : 4 });
+    updateRoutes();
     updateLineCard();
 
     const now = nowMin();
